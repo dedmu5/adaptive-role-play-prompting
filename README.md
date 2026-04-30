@@ -113,7 +113,6 @@ This makes the approach appealing for:
 .
 |-- dataset/                         # Public benchmark datasets used by the original repo
 |-- assets/                          # README figures
-|-- my_log/                          # Saved experimental logs
 |-- reports/                         # Paper draft and project report
 |-- create_dataset_for_symbolic_reasoning.py
 |-- main.py                          # Experiment entry point

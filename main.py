@@ -106,10 +106,6 @@ def clean_pred(pred):
     
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Zero-shot-CoT")
-
-    # parser.add_argument(
-    #     "--api_log_file_name", type=str, default=None, help="mandatory argument ! json['i>=1']['j==1']['k={1,2}'][{'request', response'}]"
-    # )
     
     parser.add_argument("--random_seed", type=int, default=1, help="random seed")
     
@@ -129,24 +125,9 @@ def parse_arguments():
         "--method", type=str, default="role_play", choices=["zero_shot", "role_play", "adaptive_role_play"], help="method"
     )
 
-    # parser.add_argument(
-    #     "--cot_trigger_no", type=int, default=1, help="A trigger sentence that elicits a model to execute chain of thought"
-    # )
-    # parser.add_argument(
-    #     "--max_length_cot", type=int, default=128, help="maximum length of output tokens by model for reasoning extraction"
-    # )
-    # parser.add_argument(
-    #     "--max_length_direct", type=int, default=32, help="maximum length of output tokens by model for answer extraction"
-    # )
     parser.add_argument(
         "--limit_dataset_size", type=int, default=10, help="whether to limit test dataset size. if 0, the dataset size is unlimited and we use all the samples in the dataset for testing."
     )
-    # parser.add_argument(
-    #     "--api_time_interval", type=float, default=1.0, help=""
-    # )
-    # parser.add_argument(
-    #     "--log_dir", type=str, default="./log/", help="log directory"
-    # )
     
     args = parser.parse_args()
     
@@ -190,40 +171,6 @@ def parse_arguments():
     else:
         raise ValueError("dataset is not properly defined ...")
         
-    # "Therefore, the answer ..." -> "The answer ..."
-    # args.direct_answer_trigger_for_zeroshot_cot = args.direct_answer_trigger
-        
-    # if args.cot_trigger_no == 1:
-    #     args.cot_trigger = "Let's think step by step."
-    # elif args.cot_trigger_no == 2:
-    #     args.cot_trigger = "We should think about this step by step."
-    # elif args.cot_trigger_no == 3:
-    #     args.cot_trigger = "First,"
-    # elif args.cot_trigger_no == 4:
-    #     args.cot_trigger = "Before we dive into the answer,"
-    # elif args.cot_trigger_no == 5:
-    #     args.cot_trigger = "Proof followed by the answer."
-    # elif args.cot_trigger_no == 6:
-    #     args.cot_trigger = "Let's think step by step in a realistic way."
-    # elif args.cot_trigger_no == 7:
-    #     args.cot_trigger = "Let's think step by step using common sense and knowledge."
-    # elif args.cot_trigger_no == 8:
-    #     args.cot_trigger = "Let's think like a detective step by step."
-    # elif args.cot_trigger_no == 9:
-    #     args.cot_trigger = "Let's think about this logically."
-    # elif args.cot_trigger_no == 10:
-    #     args.cot_trigger = "Let's think step by step. First,"
-    # elif args.cot_trigger_no == 11:
-    #     args.cot_trigger = "Let's think"
-    # elif args.cot_trigger_no == 12:
-    #     args.cot_trigger = "Let's solve this problem by splitting it into steps."
-    # elif args.cot_trigger_no == 13:
-    #     args.cot_trigger = "The answer is after the proof."
-    # elif args.cot_trigger_no == 14:
-    #     args.cot_trigger = "Let's be realistic and think step by step."
-    # else:
-    #     raise ValueError("cot_trigger_no is not properly defined ...")
-    
     if args.dataset in ["aqua", "svamp", "singleeq", "addsub", "gsm8k", "multiarith"]: 
         args.role_setting = "From now on, you are an excellent math teacher and always teach your students math problems correctly. And I am one of your students."
         args.reply = "That's great to hear! As your math teacher, I'll do my best to explain mathematical concepts correctly so that you can understand them easily. Feel free to ask any math problems or questions you have, and I'll be glad to assist you. Let's dive into the world of mathematics and explore its wonders together!"
